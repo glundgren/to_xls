@@ -44,7 +44,7 @@ module ToXls
         @array.each do |model|
           row = sheet.row(row_index)
           apply_format_to_row(row, @cell_format)
-          fill_row(row, columns, model)
+          fill_row(row, columns, model, model.argument)
           row_index += 1
         end
       end
