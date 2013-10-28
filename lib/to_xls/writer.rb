@@ -89,10 +89,10 @@ private
       Spreadsheet::Format.new @options[name] if @options.has_key? name
     end
 
-    def fill_row(row, column, model=nil)
+    def fill_row(row, column, model=nil, argument)
       case column
       when String, Symbol
-        row.push(model ? model.send(column) : column)
+        row.push(model ? model.send(column, argument) : column)
       when Hash
         column.each{|key, values| fill_row(row, values, model && model.send(key))}
       when Array
